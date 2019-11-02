@@ -1,0 +1,60 @@
+---
+title: "GRC EFE Facebook Demographic Info"
+author: "Sophie Webster"
+date: "11/1/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+load(`Facebook Demographics Aug - Dec 2018.xlsx`)
+load(`Facebook Demographics Jan - May 2019.xlsx`)
+load(`Facebook Demographics Jun - Oct 2019.xlsx`)
+```
+
+## R Markdown
+
+Facebook
+
+```{r}
+    data(oneyear)
+    ggplot(oneyear, aes(x = `Date`, y = `F.13-17` + `M.13-17`)) + geom_line() + ggtitle("Facebook Followers, Aged 13 to 17") + xlab("") + ylab("")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+ggplot(oneyear, aes(x=Date)) +  
+  geom_line(aes(y=`F.13-17` + `M.13-17`), colour="pink") +
+  geom_line(aes(y=`F.18-24` + `M.18-24` + `U.18-24`), colour="orange") +
+  geom_line(aes(y=`F.25-34` + `M.25-34` + `U.25-34`), colour="red") + 
+  geom_line(aes(y=`F.35-44` + `M.35-44` + `U.35-44`), colour="green") +
+  geom_line(aes(y=`F.45-54` + `M.45-54` + `U.45-54`), colour="blue") +
+  geom_line(aes(y=`F.55-64` + `M.55-64` + `U.55-64`), colour="purple") + 
+  geom_line(aes(y=`F.65+` + `M.65+` + `U.65+`), colour="yellow") + ggtitle("EFE Facebook Followers By Age Group") + xlab("") + ylab("") 
+  
+```
+
+```{r}
+ggplot(oneyear, aes(x=Date)) +                    
+  geom_line(aes(y=`F.18-24` + `M.18-24` + `U.18-24`)) +
+  geom_line(aes(y=`F.25-34` + `M.25-34` + `U.25-34`)) + 
+  geom_line(aes(y=`F.35-44` + `M.35-44` + `U.35-44`)) +
+  geom_line(aes(y=`F.45-54` + `M.45-54` + `U.45-54`)) +
+  geom_line(aes(y=`F.55-64` + `M.55-64` + `U.55-64`)) + 
+  geom_line(aes(y=`F.65+` + `M.65+` + `U.65+`)) + ggtitle("EFE Facebook Followers By Age Group") + xlab("") + ylab("") +
+  scale_fill_manual(values=c("#ffc175", "#fff400", "#6cb6ad", "#ff0000", "#1e1e1e", "#b9b8d2"), 
+                       name="Age Group",
+                       breaks=c("`F.18-24` + `M.18-24` + `U.18-24`", "`F.25-34` + `M.25-34` + `U.25-34`", "`F.35-44` + `M.35-44` + `U.35-44`", "`F.45-54` + `M.45-54` + `U.45-54`", "`F.55-64` + `M.55-64` + `U.55-64`", "`F.65+` + `M.65+` + `U.65+`"),
+                       labels=c("18-24", "25-34", "35-44", "45-54", "55-64", "65+"))
+  
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
