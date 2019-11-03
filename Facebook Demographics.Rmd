@@ -56,5 +56,9 @@ ggplot(oneyear, aes(x=Date)) +
                        labels=c("18-24", "25-34", "35-44", "45-54", "55-64", "65+"))
   
 ```
+```{r}
+data(oneyear)
+    ggplot(oneyear, aes(x = `Date`, y = `F.13-17` + `M.13-17` + `F.18-24` + `M.18-24` + `U.18-24` + `F.25-34` + `M.25-34` + `U.25-34` + `F.35-44` + `M.35-44` + `U.35-44` + `F.45-54` + `M.45-54` + `U.45-54` + `F.55-64` + `M.55-64` + `U.55-64` + `F.65+` + `M.65+` + `U.65+`)) + geom_line() + ggtitle("EFE Facebook Follower Growth") + xlab("") + ylab("")
+```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
